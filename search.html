@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Search - FreePrem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config = { corePlugins: { preflight: false } };</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <main class="main">
+    <a href="index.html" aria-label="Kembali ke beranda FreePrem" class="mb-6 mr-4 inline-flex items-center gap-2 rounded-md font-semibold text-[var(--text)] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"><svg class="size-7 text-[var(--accent)]" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="currentColor"/><rect x="6.5" y="6.5" width="9" height="9" rx="2" fill="#fff" opacity=".55"/><rect x="12.5" y="12.5" width="9" height="9" rx="2" fill="#fff"/></svg><span>FreePrem</span></a>
+    <section class="page" id="tab-pixiv" aria-labelledby="h-pixiv">
+      <header class="page-head">
+        <h1 id="h-pixiv">Pixiv Search</h1>
+        <p class="lead">Cari karya di Pixiv dengan kata kunci, lalu geser hasilnya sebagai carousel atau lihat semuanya sekaligus.</p>
+        <dl class="facts"><div><dt>Input</dt><dd>Kata kunci</dd></div><div><dt>Hasil</dt><dd>Gambar, penulis, tag</dd></div><div><dt>Tampilan</dt><dd>Carousel atau grid</dd></div></dl>
+      </header>
+      <div class="work">
+        <div class="panel">
+          <form class="pane" id="pxForm" novalidate>
+            <h2>Cari karya</h2>
+            <p class="sub">Tulis kata kunci, misalnya nama karakter atau judul.</p>
+            <label class="label" for="pxQuery">Kata kunci</label>
+            <input class="input" id="pxQuery" type="search" enterkeyhint="search" autocomplete="off" spellcheck="false" placeholder="anime" required aria-describedby="pxQueryErr">
+            <p class="field-error" id="pxQueryErr" hidden></p>
+            <button class="btn btn-primary btn-block" id="btnPx" type="submit">Cari</button>
+          </form>
+          <div id="pxMsg" class="slot" aria-live="polite"></div>
+          <div id="pxOut" aria-live="polite"><p class="mt-6 rounded-lg border border-dashed border-[var(--line-strong)] p-6 text-center text-sm text-[var(--muted)]">Hasil pencarian muncul di sini.</p></div>
+        </div>
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list"><li>Tulis kata kunci lalu tekan Cari.</li><li>Geser carousel atau tekan Lihat semua untuk melihat grid.</li><li>Buka karya di Pixiv, unduh thumbnail, atau salin tautannya.</li></ol>
+          <p class="guide-note">Pixiv memblokir pemuatan gambar langsung dari situs lain, jadi gambar dimuat lewat server FreePrem. Karya R-18 diburamkan sampai kamu menekan Tampilkan.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/search.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

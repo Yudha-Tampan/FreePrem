@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Premium - FreePrem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config = { corePlugins: { preflight: false } };</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <main class="main">
+    <a href="index.html" aria-label="Kembali ke beranda FreePrem" class="mb-6 mr-4 inline-flex items-center gap-2 rounded-md font-semibold text-[var(--text)] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"><svg class="size-7 text-[var(--accent)]" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="currentColor"/><rect x="6.5" y="6.5" width="9" height="9" rx="2" fill="#fff" opacity=".55"/><rect x="12.5" y="12.5" width="9" height="9" rx="2" fill="#fff"/></svg><span>FreePrem</span></a>
+    <div role="tablist" aria-label="Fitur Premium" class="mb-6 inline-flex max-w-full gap-1 overflow-x-auto rounded-lg bg-[var(--sunken)] p-1"><button type="button" role="tab" data-tab="am" aria-controls="tab-am" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">AM Prem</button><button type="button" role="tab" data-tab="viu" aria-controls="tab-viu" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">VIU</button></div>
+    <section class="page" id="tab-am" aria-labelledby="h-am">
+      <header class="page-head">
+        <h1 id="h-am">Alight Motion Premium</h1>
+        <p class="lead">Aktifkan paket premium di akun Alight Motion lewat verifikasi email.</p>
+        <dl class="facts">
+          <div><dt>Durasi</dt><dd>1 tahun</dd></div>
+          <div><dt>Batas harian</dt><dd>60 (Premium), 150 (VIP)</dd></div>
+          <div><dt>Verifikasi</dt><dd>Link dari Gmail</dd></div>
+        </dl>
+      </header>
+
+      <div class="work">
+        <div class="panel">
+          <ol class="steps" id="steps" aria-label="Langkah aktivasi">
+            <li class="is-active"><span class="step-n">1</span>Email</li>
+            <li><span class="step-n">2</span>Kirim link</li>
+            <li><span class="step-n">3</span>Verifikasi</li>
+          </ol>
+
+          <form class="pane" id="p1" novalidate>
+            <h2 tabindex="-1">Masukkan email</h2>
+            <p class="sub">Gunakan email yang terdaftar di akun Alight Motion kamu.</p>
+            <label class="label" for="email">Email</label>
+            <input class="input" id="email" type="email" inputmode="email" autocomplete="email" placeholder="nama@gmail.com" required>
+            <button class="btn btn-primary btn-block" id="btnSend" type="submit">Kirim link verifikasi</button>
+          </form>
+
+          <div class="pane" id="p2">
+            <h2 tabindex="-1">Cek kotak masuk</h2>
+            <div class="alert alert-ok" role="status">
+              <strong>Link verifikasi terkirim</strong>
+              <span id="sentTo"></span>
+            </div>
+            <p class="sub">Buka Gmail, cari email dari Alight Motion, lalu salin link masuk di dalamnya.</p>
+            <button class="btn btn-primary btn-block" id="btnNext" type="button">Lanjutkan</button>
+            <div class="actions">
+              <button class="btn btn-ghost" id="btnResend" type="button">Kirim ulang</button>
+              <button class="btn btn-ghost" type="button" data-go="1">Ganti email</button>
+            </div>
+          </div>
+
+          <form class="pane" id="p3" hidden novalidate>
+            <h2 tabindex="-1">Tempel link dari Gmail</h2>
+            <p class="sub">Link diawali dengan alight-creative.firebaseapp.com.</p>
+            <label class="label" for="link">Link verifikasi</label>
+            <div class="field">
+              <input class="input" id="link" type="url" autocomplete="off" spellcheck="false" placeholder="https://alight-creative.firebaseapp.com/…" required>
+              <button class="btn btn-inline" id="pasteLink" type="button">Tempel</button>
+            </div>
+            <button class="btn btn-primary btn-block" id="btnVerify" type="submit">Verifikasi sekarang</button>
+            <div class="actions">
+              <button class="btn btn-ghost" type="button" data-go="2">Kembali</button>
+            </div>
+          </form>
+
+          <div class="pane" id="p4">
+            <div class="success">
+              <span class="success-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              <h2 tabindex="-1">Premium aktif</h2>
+              <dl class="cred">
+                <div><dt>Email</dt><dd id="doneEmail"></dd></div>
+                <div><dt>Durasi</dt><dd id="doneDuration"></dd></div>
+              </dl>
+            </div>
+            <button class="btn btn-secondary btn-block" type="button" data-go="1">Aktifkan email lain</button>
+          </div>
+
+          <div id="amMsg" class="slot" aria-live="polite"></div>
+        </div>
+
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list">
+            <li>Masukkan email akun Alight Motion.</li>
+            <li>Kami mengirim link masuk ke email tersebut.</li>
+            <li>Salin link dari Gmail dan tempel di langkah terakhir.</li>
+          </ol>
+          <p class="guide-note">Link verifikasi dapat kedaluwarsa. Jika gagal, kembali dan kirim ulang untuk mendapat link baru.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" id="tab-viu" aria-labelledby="h-viu">
+      <header class="page-head">
+        <h1 id="h-viu">VIU Premium</h1>
+        <p class="lead">Buat akun VIU Premium baru dan langsung dapatkan email serta passwordnya.</p>
+        <dl class="facts">
+          <div><dt>Jenis akun</dt><dd>Premium</dd></div>
+          <div><dt>Hasil</dt><dd>Email dan password</dd></div>
+          <div><dt>Akun</dt><dd>Baru setiap permintaan</dd></div>
+        </dl>
+      </header>
+
+      <div class="work">
+        <div class="panel">
+          <div class="pane">
+            <h2>Buat akun</h2>
+            <p class="sub">Tekan tombol di bawah. Data akun muncul dalam beberapa detik.</p>
+            <button class="btn btn-primary btn-block" id="btnViu" type="button">Lanjutkan</button>
+            <div id="viuOut"></div>
+          </div>
+          <div id="viuMsg" class="slot" aria-live="polite"></div>
+        </div>
+
+        <aside class="guide">
+          <h3>Setelah akun muncul</h3>
+          <ol class="guide-list">
+            <li>Salin email dan password dengan tombol Salin.</li>
+            <li>Masuk di aplikasi atau situs VIU.</li>
+            <li>Simpan datanya sebelum menutup halaman ini.</li>
+          </ol>
+          <p class="guide-note">Setiap permintaan membuat akun baru, jadi data sebelumnya tidak ditampilkan lagi.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/premium.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

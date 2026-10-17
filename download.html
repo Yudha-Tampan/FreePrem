@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Download - FreePrem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config = { corePlugins: { preflight: false } };</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <main class="main">
+    <a href="index.html" aria-label="Kembali ke beranda FreePrem" class="mb-6 mr-4 inline-flex items-center gap-2 rounded-md font-semibold text-[var(--text)] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"><svg class="size-7 text-[var(--accent)]" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="currentColor"/><rect x="6.5" y="6.5" width="9" height="9" rx="2" fill="#fff" opacity=".55"/><rect x="12.5" y="12.5" width="9" height="9" rx="2" fill="#fff"/></svg><span>FreePrem</span></a>
+    <div role="tablist" aria-label="Fitur Download" class="mb-6 inline-flex max-w-full gap-1 overflow-x-auto rounded-lg bg-[var(--sunken)] p-1"><button type="button" role="tab" data-tab="tiktok" aria-controls="tab-tiktok" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">TikTok</button><button type="button" role="tab" data-tab="ucdrive" aria-controls="tab-ucdrive" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">UC Drive</button></div>
+    <section class="page" id="tab-tiktok" aria-labelledby="h-tiktok">
+      <header class="page-head">
+        <h1 id="h-tiktok">TikTok Downloader</h1>
+        <p class="lead">Unduh video dan audio dari tautan video TikTok. Varian kualitas mengikuti yang dikembalikan API.</p>
+        <dl class="facts"><div><dt>Input</dt><dd>Tautan video</dd></div><div><dt>Hasil</dt><dd>Video, audio, statistik</dd></div><div><dt>Varian</dt><dd>HD, standar, watermark</dd></div></dl>
+      </header>
+      <div class="work">
+        <div class="panel">
+          <form class="pane" id="ttForm" novalidate>
+            <h2>Tempel tautan</h2>
+            <p class="sub">Salin tautan video dari TikTok lalu tempel di sini.</p>
+            <label class="label" for="ttUrl">Tautan TikTok</label>
+            <input class="input" id="ttUrl" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://vt.tiktok.com/..." required aria-describedby="ttUrlErr">
+            <p class="field-error" id="ttUrlErr" hidden></p>
+            <button class="btn btn-primary btn-block" id="btnTt" type="submit">Ambil media</button>
+          </form>
+          <div id="ttMsg" class="slot" aria-live="polite"></div>
+          <div id="ttOut" aria-live="polite"><p class="mt-6 rounded-lg border border-dashed border-[var(--line-strong)] p-6 text-center text-sm text-[var(--muted)]">Hasil unduhan muncul di sini.</p></div>
+        </div>
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list"><li>Salin tautan video dari aplikasi TikTok.</li><li>Tempel di kolom, lalu tekan Ambil media.</li><li>Pilih varian video, lalu unduh video atau audio.</li></ol>
+          <p class="guide-note">Tautan media bisa kedaluwarsa. Jika unduhan gagal, ambil ulang media dari tautan yang sama.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" id="tab-ucdrive" aria-labelledby="h-ucdrive">
+      <header class="page-head">
+        <h1 id="h-ucdrive">UC Drive Downloader</h1>
+        <p class="lead">Lihat dan unduh berkas dari tautan berbagi UC Drive, termasuk folder berisi banyak berkas.</p>
+        <dl class="facts"><div><dt>Input</dt><dd>Tautan berbagi</dd></div><div><dt>Hasil</dt><dd>Daftar berkas</dd></div><div><dt>Preview</dt><dd>Putar video langsung</dd></div></dl>
+      </header>
+      <div class="work">
+        <div class="panel">
+          <form class="pane" id="ucForm" novalidate>
+            <h2>Tempel tautan berbagi</h2>
+            <p class="sub">Isi kode akses hanya jika tautan memintanya.</p>
+            <label class="label" for="ucUrl">Tautan UC Drive</label>
+            <input class="input" id="ucUrl" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://uc-share.com/s/..." required aria-describedby="ucUrlErr">
+            <p class="field-error" id="ucUrlErr" hidden></p>
+            <label class="label mt-4" for="ucPass">Kode akses (opsional)</label>
+            <input class="input" id="ucPass" autocomplete="off" spellcheck="false" placeholder="Kosongkan jika tidak ada">
+            <button class="btn btn-primary btn-block" id="btnUc" type="submit">Ambil berkas</button>
+          </form>
+          <div id="ucMsg" class="slot" aria-live="polite"></div>
+          <div id="ucOut" aria-live="polite"><p class="mt-6 rounded-lg border border-dashed border-[var(--line-strong)] p-6 text-center text-sm text-[var(--muted)]">Daftar berkas muncul di sini.</p></div>
+        </div>
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list"><li>Salin tautan berbagi dari UC Drive.</li><li>Tempel di kolom, lalu tekan Ambil berkas.</li><li>Putar, preview, atau unduh tiap berkas dari daftar.</li></ol>
+          <p class="guide-note">Tautan unduh dari UC Drive memiliki masa berlaku. Jika gagal dibuka, ambil ulang daftar berkas.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/download.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

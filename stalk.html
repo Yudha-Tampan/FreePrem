@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Stalk - FreePrem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config = { corePlugins: { preflight: false } };</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <main class="main">
+    <a href="index.html" aria-label="Kembali ke beranda FreePrem" class="mb-6 mr-4 inline-flex items-center gap-2 rounded-md font-semibold text-[var(--text)] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"><svg class="size-7 text-[var(--accent)]" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="currentColor"/><rect x="6.5" y="6.5" width="9" height="9" rx="2" fill="#fff" opacity=".55"/><rect x="12.5" y="12.5" width="9" height="9" rx="2" fill="#fff"/></svg><span>FreePrem</span></a>
+    <div role="tablist" aria-label="Fitur Stalk" class="mb-6 inline-flex max-w-full gap-1 overflow-x-auto rounded-lg bg-[var(--sunken)] p-1"><button type="button" role="tab" data-tab="ml" aria-controls="tab-ml" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">Mobile Legends</button><button type="button" role="tab" data-tab="roblox" aria-controls="tab-roblox" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">Roblox</button><button type="button" role="tab" data-tab="instagram" aria-controls="tab-instagram" aria-selected="false" class="whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] aria-selected:bg-[var(--surface)] aria-selected:text-[var(--text)] aria-selected:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">Instagram</button></div>
+    <section class="page" id="tab-ml" aria-labelledby="h-ml">
+      <header class="page-head">
+        <h1 id="h-ml">Mobile Legends</h1>
+        <p class="lead">Cek profil akun, status bind, dan event bonus double diamond Mobile Legends: Bang Bang.</p>
+        <dl class="facts">
+          <div><dt>Input</dt><dd>User ID dan Server ID</dd></div>
+          <div><dt>Data</dt><dd>Profil, bind, event</dd></div>
+          <div><dt>Waktu proses</dt><dd>Hingga 15 detik</dd></div>
+        </dl>
+      </header>
+
+      <div class="work">
+        <div class="panel">
+          <form class="pane" id="mlForm" novalidate>
+            <h2>Cek akun</h2>
+            <p class="sub">Isi User ID dan Server ID. Keduanya wajib diisi sebelum data ditampilkan.</p>
+            <div class="field-grid cols-2">
+              <div>
+                <label class="label" for="mlUser">User ID</label>
+                <input class="input" id="mlUser" inputmode="numeric" autocomplete="off" placeholder="Contoh: 123456789" required aria-describedby="mlUserErr">
+                <p class="field-error" id="mlUserErr"></p>
+              </div>
+              <div>
+                <label class="label" for="mlServer">Server ID</label>
+                <input class="input" id="mlServer" inputmode="numeric" autocomplete="off" placeholder="Contoh: 1234" required aria-describedby="mlServerErr">
+                <p class="field-error" id="mlServerErr"></p>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block" id="btnMl" type="submit">Cek akun</button>
+          </form>
+          <div id="mlMsg" class="slot" aria-live="polite"></div>
+          <div id="mlOut" aria-live="polite"></div>
+        </div>
+
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list">
+            <li>Masukkan User ID dan Server ID dari profil game.</li>
+            <li>Tekan Cek akun dan tunggu data dimuat.</li>
+            <li>Lihat nickname, negara, status bind, dan event yang tersedia.</li>
+          </ol>
+          <p class="guide-note">Server game kadang lambat. Jika status bind tidak muncul, coba cek ulang beberapa saat lagi.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" id="tab-roblox" aria-labelledby="h-roblox">
+      <header class="page-head">
+        <h1 id="h-roblox">Roblox</h1>
+        <p class="lead">Lihat profil pengguna Roblox lengkap dengan avatar, badge, grup, dan item yang dipakai.</p>
+        <dl class="facts">
+          <div><dt>Input</dt><dd>Username</dd></div>
+          <div><dt>Data</dt><dd>Profil, grup, item</dd></div>
+          <div><dt>Gambar</dt><dd>Avatar dan badge</dd></div>
+        </dl>
+      </header>
+
+      <div class="work">
+        <div class="panel">
+          <form class="pane" id="rbForm" novalidate>
+            <h2>Cari pengguna</h2>
+            <p class="sub">Isi username Roblox terlebih dahulu untuk menampilkan profilnya.</p>
+            <label class="label" for="rbUser">Username</label>
+            <input class="input" id="rbUser" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Contoh: Builderman" required aria-describedby="rbUserErr">
+            <p class="field-error" id="rbUserErr"></p>
+            <button class="btn btn-primary btn-block" id="btnRb" type="submit">Cari profil</button>
+          </form>
+          <div id="rbMsg" class="slot" aria-live="polite"></div>
+          <div id="rbOut" aria-live="polite"></div>
+        </div>
+
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list">
+            <li>Masukkan username Roblox, bukan nama tampilan.</li>
+            <li>Tekan Cari profil dan tunggu data dimuat.</li>
+            <li>Geser carousel untuk melihat tampilan avatar dan badge.</li>
+          </ol>
+          <p class="guide-note">Username terdiri dari 3 sampai 20 karakter: huruf, angka, atau garis bawah.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" id="tab-instagram" aria-labelledby="h-instagram">
+      <header class="page-head">
+        <h1 id="h-instagram">Instagram</h1>
+        <p class="lead">Lihat profil Instagram beserta postingan dan reels terbaru, lengkap dengan tautan unduh foto dan video.</p>
+        <dl class="facts">
+          <div><dt>Input</dt><dd>Username</dd></div>
+          <div><dt>Data</dt><dd>Profil, postingan, reels</dd></div>
+          <div><dt>Media</dt><dd>Foto dan video</dd></div>
+        </dl>
+      </header>
+
+      <div class="work">
+        <div class="panel">
+          <form class="pane" id="igForm" novalidate>
+            <h2>Cari akun</h2>
+            <p class="sub">Isi username Instagram terlebih dahulu untuk menampilkan profilnya.</p>
+            <label class="label" for="igUser">Username</label>
+            <input class="input" id="igUser" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Contoh: instagram" required aria-describedby="igUserErr">
+            <p class="field-error" id="igUserErr"></p>
+            <button class="btn btn-primary btn-block" id="btnIg" type="submit">Cari akun</button>
+          </form>
+          <div id="igMsg" class="slot" aria-live="polite"></div>
+          <div id="igOut" aria-live="polite"></div>
+        </div>
+
+        <aside class="guide">
+          <h3>Cara kerja</h3>
+          <ol class="guide-list">
+            <li>Masukkan username tanpa tanda @.</li>
+            <li>Tekan Cari akun dan tunggu data dimuat.</li>
+            <li>Geser carousel untuk melihat postingan dan reels, lalu unduh medianya.</li>
+          </ol>
+          <p class="guide-note">Akun privat atau akun tanpa konten publik hanya menampilkan profil dasar.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/stalk.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>
